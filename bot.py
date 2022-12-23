@@ -17,7 +17,7 @@ bot = Bot(token=Cfg.BOT_TOKEN)
 commands: list[types.BotCommand] = []
 commands.append(types.BotCommand("start", "Hello"))
 commands.append(types.BotCommand("help", "帮助"))
-commands.append(types.BotCommand("setu", "获取一张涩图：/setu tag1 tag2"))
+commands.append(types.BotCommand("setu", "获取一张涩图：/setu 白丝 萝莉"))
 dp = Dispatcher(bot=bot)
 
 @dp.message_handler(commands=["help"])
@@ -25,7 +25,7 @@ async def help_handler(event: types.Message):
     msg = f"""\
 此机器人还在测试中，目前只有获取涩图一个功能\\~
 
-/setu \\- 获取一张涩图，可以使用 `/setu tag1 tag2` 的格式限定涩图范围
+/setu \\- 获取一张涩图，可以使用 `/setu 白丝 萝莉` 的格式限定涩图范围
 """
     await event.reply(msg, types.ParseMode.MARKDOWN_V2)
 
