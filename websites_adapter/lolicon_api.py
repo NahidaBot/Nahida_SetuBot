@@ -35,13 +35,16 @@ async def get_setu(tag: str|list[str] = None,
     
     data: list[dict] = r["data"]
 
+    if len(data) == 0:
+        return []
+
     list_artInfo = []
 
     for pic in data:
         image = Image(pic["urls"]["regular"], pic["urls"]["original"], pic["width"], pic["height"])
         pid = pic["pid"]
         post_url = "https://www.pixiv.net/artworks/"+str(pid)
-        artInfo = ArtInfo("Pixiv", post_url, pic["title"], "", pic["author"], pic["uid"], 1, [image])
+        artInfo = ArtInfo("Pixiv", post_url, pid, pic["title"], "", pic["author"], pic["uid"], 1, [image])
         list_artInfo.append(artInfo)
     
     return list_artInfo
